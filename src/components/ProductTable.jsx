@@ -9,8 +9,10 @@ class ProductTable extends React.Component {
     let lastCategory = null;
 
     products.forEach((product) => {
-      if (product.name.indexOf(filterText) === -1) return;
       if (inStockOnly && !product.stocked) return;
+      if (product.name.toLowerCase().indexOf(filterText.toLowerCase()) === -1) {
+        return;
+      }
 
       if (product.category !== lastCategory) {
         rows.push(
